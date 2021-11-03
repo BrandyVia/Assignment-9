@@ -1,0 +1,43 @@
+---
+title: "Goal Programming"
+output:
+  pdf_document: default
+  html_notebook:
+    highlight: textmate
+    theme: cerulean
+  html_document:
+    df_print: paged
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(warning = FALSE, message = FALSE)
+```
+
+
+This document contains the code for Goal Programming for the R&D Division of Emax Corp
+
+# R&D Division of Emax Co.
+
+```{r}
+library(lpSolveAPI)
+gp <- read.lp("rnd.lp")
+gp
+```
+## Solve
+```{r}
+solve(gp)
+get.objective(gp)
+get.variables(gp)
+```
+
+### Remarks
+
+Applying the simplex method to this formulation yields an optimal solution of x1 = 0, x2 = 0, x3 = 15, y1p = 25, y1m = 0, y2m = 0, y2p = 0. Note that the solution is given in the order in which the variables appear in the formulation. This implies that y2 = 0, so the next year earnings goal is fully satisfied, but the employment goal is exceeded by 25 (2500 employees). which will reduce the profit by 150 (6*25). As a result of that, Z is equal to 225. 
+
+
+
+
+
+
+
+
